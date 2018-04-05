@@ -1,0 +1,55 @@
+body {
+  box-sizing: border-box;
+  color: #282828;
+  font-family: sans-serif;
+  padding: 0 20px;
+}
+select,
+input,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='date'] {
+  font-family: sans-serif;
+}
+select,
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 30px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  width: 160px;
+}
+input[type='submit'] {
+  height: 34px;
+  background: #ccc;
+  background-image: -webkit-linear-gradient(top, #ccc, #aaa);
+  background-image: -moz-linear-gradient(top, #ccc, #aaa);
+  background-image: -ms-linear-gradient(top, #ccc, #aaa);
+  background-image: -o-linear-gradient(top, #ccc, #aaa);
+  background-image: linear-gradient(to bottom, #ccc, #aaa);
+  border: none;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 3px #666666;
+  -moz-box-shadow: 2px 2px 3px #666666;
+  box-shadow: 2px 2px 3px #666666;
+  font-size: 16px;
+  text-decoration: none;
+}
+input[type='submit']:hover {
+  background-image: -webkit-linear-gradient(top, #bbb, #aaa);
+  background-image: -moz-linear-gradient(top, #bbb, #aaa);
+  background-image: -ms-linear-gradient(top, #bbb, #aaa);
+  background-image: -o-linear-gradient(top, #bbb, #aaa);
+  background-image: linear-gradient(to bottom, #bbb, #aaa);
+}
