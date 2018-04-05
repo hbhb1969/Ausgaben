@@ -6,6 +6,9 @@ Buchen.addEventListener('submit', (e) => {
   const kommentar = Buchen.querySelector('.kommentar').value;
   const euro = Buchen.querySelector('.euro').value;
   post('/buchen', { datum, art, kommentar, euro });
+  Buchen.querySelector('.art').value = '';
+  Buchen.querySelector('.kommentar').value = '';
+  Buchen.querySelector('.euro').value = '';
 });
 
 function post(path, data) {

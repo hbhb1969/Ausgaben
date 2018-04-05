@@ -10,7 +10,7 @@ app.post('/buchen', (req, res) => {
       datum: req.body.datum,
       art: req.body.art,
       kommentar: req.body.kommentar,
-      euro: req.body.euro
+      euro: req.body.euro.replace(/,/g, '.')
     })
     .then(() => res.sendStatus(200));
 });
