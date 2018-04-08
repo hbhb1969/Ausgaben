@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const store = require('./store');
+const buchen = require('./db/buchen');
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.post('/buchen', (req, res) => {
-  store
+  buchen
     .buchen({
       datum: req.body.datum,
       art: req.body.art,

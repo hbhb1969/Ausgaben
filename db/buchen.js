@@ -1,4 +1,4 @@
-const knex = require('knex')(require('./db/knexfile'));
+const knex = require('knex')(require('./knexfile'));
 
 module.exports = {
   buchen({ datum, art, kommentar, euro }) {
