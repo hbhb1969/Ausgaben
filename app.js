@@ -14,7 +14,9 @@ app.post('/buchen', (req, res) => {
     })
     .then(() => res.sendStatus(200));
 });
+// Route zum Füllen eines Select Feldes
 app.get('/select', function(req, res) {
+  // Route /select
   var mysql = require('mysql');
   var connection = mysql.createConnection({
     host: 'localhost',
@@ -30,7 +32,7 @@ app.get('/select', function(req, res) {
   ) {
     connection.end();
     if (err) throw err;
-    res.json(rows);
+    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
   });
 });
 app.listen(7555, () => {
