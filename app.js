@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const buchen = require('./db/buchen');
+const insert = require('./db/insert');
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.post('/buchen', (req, res) => {
-  buchen
+  insert
     .buchen({
       datum: req.body.datum,
       art: req.body.art,
@@ -16,7 +16,6 @@ app.post('/buchen', (req, res) => {
 });
 // Route zum Füllen eines Select Feldes
 app.get('/select', function(req, res) {
-  // Route /select
   var mysql = require('mysql');
   var connection = mysql.createConnection({
     host: 'localhost',
