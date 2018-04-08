@@ -13,7 +13,11 @@ var values = {
   Euro: '7.95'
 };
 connection.query('INSERT INTO ausgaben SET ?', values, function(err, result) {
-  if (err) throw err;
+  if (err) {
+    alert('Fehler' + err.message);
+    throw err;
+  }
+  alert(result);
   console.log(result);
   connection.end();
 });

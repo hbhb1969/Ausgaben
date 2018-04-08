@@ -9,6 +9,7 @@ Buchen.addEventListener('submit', (e) => {
   Buchen.querySelector('.art').value = '';
   Buchen.querySelector('.kommentar').value = '';
   Buchen.querySelector('.euro').value = '';
+  Buchen.querySelector('.art').focus();
 });
 
 function post(path, data) {
