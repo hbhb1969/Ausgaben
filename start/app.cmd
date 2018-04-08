@@ -1,4 +1,5 @@
-
+cd c://node/ausgaben/start
+start /MIN xampp.cmd
+call ff.cmd
 cd c://node/ausgaben
 node app.js
-start "" "C:\Programme\Mozilla Firefox\firefox.exe" http://localhost:7555/buchen.html
