@@ -8,21 +8,29 @@
   <form class="Buchen">
     <h1>Buchen</h1>
     <input type="date" class="datum" placeholder="Datum"><br>
-    <input type="text" class="art" placeholder="Art"><br>
+    <select id="art" name="art" class="art" placeholder="Art"></select><br>
     <input type="text" class="kommentar" placeholder="Kommentar"><br>
     <input type="number"  step="0.01" class="euro" placeholder="Euro"><br>
     <input type="submit" value="Buchen">
   </form>
-  <h2>Legende Art</h2>
-  <p>1: Lebensmittel <br>
-  3: Körperpfleger<br>
-  4: Transport<br>
-  5: Auswärts essen & trinken<br>
-  6: Sonstiges<br>
-  7: Kleidung<br>
-  8: Elektro<br>
-  9: Haushalt<br>
-</p>
+<script type="text/javascript">
+var html = '';
+fetch('http://localhost:7555/select/')
+  .then(function(response) {
+    if (response.ok) {
+      return response.json();
+    }
+  })
+  .then(function(json) {
+    console.log('in Schleife');
+    for (let row of json) {
+      console.log(row.bezeichnung);
+      html += '<option value=' + row.id + '>' + row.bezeichnung + '</option>';
+    }
+    document.getElementById('art').innerHTML = html;
+  })
+  .catch(console.log);
+</script>
   <script src="/publicapp.js"></script>
 </body>
 </html>
