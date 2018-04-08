@@ -6,7 +6,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.post('/buchen', (req, res) => {
   insert
-    .buchen({
+    .insert({
       datum: req.body.datum,
       art: req.body.art,
       kommentar: req.body.kommentar,
