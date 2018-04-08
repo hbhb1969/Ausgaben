@@ -13,6 +13,9 @@
     <input type="number"  step="0.01" class="euro" placeholder="Euro"><br>
     <input type="submit" value="Buchen">
   </form>
+  Ausgaben gesamt:
+  <div id="gesamtausgaben" >
+  </div>
 <script type="text/javascript">
 var html = '';
 fetch('http://localhost:7555/select-ausgaben-art/')
@@ -22,14 +25,30 @@ fetch('http://localhost:7555/select-ausgaben-art/')
     }
   })
   .then(function(json) {
-    console.log('in Schleife');
     for (let row of json) {
-      console.log(row.bezeichnung);
       html += '<option value=' + row.id + '>' + row.bezeichnung + '</option>';
     }
     document.getElementById('art').innerHTML = html;
   })
   .catch(console.log);
+
+berechneGesamt();
+function berechneGesamt() {
+  var ausgabenGesamt = 0;
+  fetch('http://localhost:7555/select-ausgaben-gesamt/')
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function(json) {
+      for (let row of json) {
+        ausgabenGesamt += row.Euro;
+      }
+      document.getElementById('gesamtausgaben').innerHTML = ausgabenGesamt;
+    })
+    .catch(console.log);
+}
 </script>
   <script src="/publicapp.js"></script>
 </body>

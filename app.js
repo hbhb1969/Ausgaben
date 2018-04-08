@@ -33,6 +33,12 @@ app.get('/select-ausgaben-art', (req, res) => {
     }
   );
 });
+app.get('/select-ausgaben-gesamt', (req, res) => {
+  pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
+    if (err) throw err;
+    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+  });
+});
 app.listen(7555, () => {
   console.log('Server running on http://localhost:7555');
 });
