@@ -1,5 +1,5 @@
 const buchen = document.querySelector('.buchen');
-var gesamt = document.getElementById(gesamtausgaben);
+const gesamtausgaben = document.querySelector('#gesamtausgaben');
 buchen.addEventListener('submit', (e) => {
   e.preventDefault();
   const datum = buchen.querySelector('.datum').value;
@@ -12,9 +12,9 @@ buchen.addEventListener('submit', (e) => {
     kommentar,
     euro
   });
-  buchen.querySelector('.art').value = '';
-  buchen.querySelector('.kommentar').value = '';
-  buchen.querySelector('.euro').value = '';
+  art.value = '';
+  kommentar.value = '';
+  euro.value = '';
   buchen.querySelector('.art').focus();
 
   setTimeout("berechneGesamt()", 1000); // Ohne Timeout ist die Abfrage schneller als die Buchung
