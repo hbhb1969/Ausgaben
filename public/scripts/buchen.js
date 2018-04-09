@@ -1,21 +1,21 @@
-const Buchen = document.querySelector('.Buchen');
+const buchen = document.querySelector('.buchen');
 var gesamt = document.getElementById(gesamtausgaben);
-Buchen.addEventListener('submit', (e) => {
+buchen.addEventListener('submit', (e) => {
   e.preventDefault();
-  const datum = Buchen.querySelector('.datum').value;
-  const art = Buchen.querySelector('.art').value;
-  const kommentar = Buchen.querySelector('.kommentar').value;
-  const euro = Buchen.querySelector('.euro').value;
+  const datum = buchen.querySelector('.datum').value;
+  const art = buchen.querySelector('.art').value;
+  const kommentar = buchen.querySelector('.kommentar').value;
+  const euro = buchen.querySelector('.euro').value;
   post('/buchen', {
     datum,
     art,
     kommentar,
     euro
   });
-  Buchen.querySelector('.art').value = '';
-  Buchen.querySelector('.kommentar').value = '';
-  Buchen.querySelector('.euro').value = '';
-  Buchen.querySelector('.art').focus();
+  buchen.querySelector('.art').value = '';
+  buchen.querySelector('.kommentar').value = '';
+  buchen.querySelector('.euro').value = '';
+  buchen.querySelector('.art').focus();
 
   setTimeout("berechneGesamt()", 1000); // Ohne Timeout ist die Abfrage schneller als die Buchung
 });
