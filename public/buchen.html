@@ -17,8 +17,8 @@
   <div id="gesamtausgaben" >
   </div>
 <script type="text/javascript">
-var html = '';
-fetch('http://localhost:7555/select-ausgaben-art/')
+var html = "";
+fetch("http://localhost:7555/select-ausgaben-art/")
   .then(function(response) {
     if (response.ok) {
       return response.json();
@@ -26,16 +26,16 @@ fetch('http://localhost:7555/select-ausgaben-art/')
   })
   .then(function(json) {
     for (let row of json) {
-      html += '<option value=' + row.id + '>' + row.bezeichnung + '</option>';
+      html += "<option value=" + row.id + ">" + row.bezeichnung + "</option>";
     }
-    document.getElementById('art').innerHTML = html;
+    document.getElementById("art").innerHTML = html;
   })
   .catch(console.log);
 
 berechneGesamt();
 function berechneGesamt() {
   var ausgabenGesamt = 0;
-  fetch('http://localhost:7555/select-ausgaben-gesamt/')
+  fetch("http://localhost:7555/select-ausgaben-gesamt/")
     .then(function(response) {
       if (response.ok) {
         return response.json();
@@ -45,11 +45,11 @@ function berechneGesamt() {
       for (let row of json) {
         ausgabenGesamt += row.Euro;
       }
-      document.getElementById('gesamtausgaben').innerHTML = ausgabenGesamt;
+      document.getElementById("gesamtausgaben").innerHTML = ausgabenGesamt;
     })
     .catch(console.log);
 }
 </script>
-  <script src="/publicapp.js"></script>
+  <script src="./scripts/buchen.js"></script>
 </body>
 </html>

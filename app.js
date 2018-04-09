@@ -23,7 +23,7 @@ app.post('/buchen', (req, res) => {
     res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
   });
 });
-// Route zum Füllen eines Select Feldes
+// Route zum Speichern der Daten eines Select-Feldes
 app.get('/select-ausgaben-art', (req, res) => {
   pool.query(
     'SELECT * FROM ausgaben_art ORDER BY bezeichnung',
@@ -33,6 +33,7 @@ app.get('/select-ausgaben-art', (req, res) => {
     }
   );
 });
+// Route zum Speichern der Gesamtausgaben
 app.get('/select-ausgaben-gesamt', (req, res) => {
   pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
     if (err) throw err;
