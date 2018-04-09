@@ -17,7 +17,8 @@ buchen.addEventListener('submit', (e) => {
     euro
   });
 
-  buchen.querySelector('.art').value = '';
+  // Formular aufräumen
+  buchen.querySelector('.art').value = ''; //art =''; klappt merkwürdigerweise nicht
   buchen.querySelector('.kommentar').value = '';
   buchen.querySelector('.euro').value = '';
   buchen.querySelector('.art').focus();
