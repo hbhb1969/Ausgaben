@@ -27,6 +27,17 @@ buchen.addEventListener('submit', (e) => {
   setTimeout("berechneGesamt()", 1000); // Ohne Timeout ist die Abfrage schneller als die Buchung mit post
 });
 
+function post(path, data) {
+  return window.fetch(path, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+}
+
 function berechneGesamt() {
   var ausgabenGesamt = 0;
   fetch('http://localhost:7555/select-ausgaben-gesamt/')
@@ -42,15 +53,4 @@ function berechneGesamt() {
       gesamtausgaben.innerHTML = ausgabenGesamt;
     })
     .catch(console.log);
-}
-
-function post(path, data) {
-  return window.fetch(path, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
 }
