@@ -16,6 +16,10 @@ buchen.addEventListener('submit', (e) => {
     kommentar,
     euro
   });
+
+  buchen.querySelector('.art').value = '';
+  buchen.querySelector('.kommentar').value = '';
+  buchen.querySelector('.euro').value = '';
   buchen.querySelector('.art').focus();
 
   // Buchungskontrolle
