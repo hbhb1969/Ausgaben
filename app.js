@@ -6,6 +6,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+// Liest die zu buchenden Daten aus der Query und schickt einen SQL-Befehl zur DB
 app.post('/buchen', (req, res) => {
   var sql =
     "INSERT INTO ausgaben (datum, art, kommentar, euro) VALUES ('" +
@@ -20,9 +21,10 @@ app.post('/buchen', (req, res) => {
   pool.query(sql, (err, rows, fields) => {
     if (err) throw err;
     console.log('Gebucht: ' + req.body.art + ' - ' + req.body.euro + ' €');
-    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    res.json(rows);
   });
 });
+
 // Route zum Speichern der Daten eines Select-Feldes
 app.get('/select-ausgaben-art', (req, res) => {
   pool.query(

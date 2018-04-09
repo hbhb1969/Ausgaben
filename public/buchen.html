@@ -16,7 +16,9 @@
   Ausgaben gesamt:
   <div id="gesamtausgaben" >
   </div>
+
 <script type="text/javascript">
+// Selectfeld wird gefüllt
 var html = "";
 fetch("http://localhost:7555/select-ausgaben-art/")
   .then(function(response) {
@@ -32,6 +34,7 @@ fetch("http://localhost:7555/select-ausgaben-art/")
   })
   .catch(console.log);
 
+// bisherige Gesamtausgaben werden berechnet und in das Dokument geschrieben
 berechneGesamt();
 function berechneGesamt() {
   var ausgabenGesamt = 0;
@@ -50,6 +53,6 @@ function berechneGesamt() {
     .catch(console.log);
 }
 </script>
-  <script src="./scripts/buchen.js"></script>
+<script src="./scripts/buchen.js"></script>
 </body>
 </html>
