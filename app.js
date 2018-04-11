@@ -6,6 +6,17 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+// Route zum Speichern der Daten eines Select-Feldes
+app.get('/select-ausgaben-art', (req, res) => {
+  pool.query(
+    'SELECT * FROM ausgaben_art ORDER BY bezeichnung',
+    (err, rows, fields) => {
+      if (err) throw err;
+      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    }
+  );
+});
+
 // Liest die zu buchenden Daten aus der Query und schickt einen SQL-Befehl zur DB
 app.post('/buchen', (req, res) => {
   var sql =
@@ -25,16 +36,6 @@ app.post('/buchen', (req, res) => {
   });
 });
 
-// Route zum Speichern der Daten eines Select-Feldes
-app.get('/select-ausgaben-art', (req, res) => {
-  pool.query(
-    'SELECT * FROM ausgaben_art ORDER BY bezeichnung',
-    (err, rows, fields) => {
-      if (err) throw err;
-      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
-    }
-  );
-});
 // Route zum Speichern der Gesamtausgaben
 app.get('/select-ausgaben-gesamt', (req, res) => {
   pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
