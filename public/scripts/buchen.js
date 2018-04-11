@@ -11,11 +11,12 @@ buchen.addEventListener('submit', (e) => {
 
   // schickt die Daten an die Adresse /buchen, wo sie in der app.js in den INSERT-Befehl eingefügt werden
   post('/buchen', {
-    datum,
-    art,
-    kommentar,
-    euro
-  });
+      datum,
+      art,
+      kommentar,
+      euro
+    })
+    .then(berechneGesamt());;
 
   // Formular aufräumen
   buchen.querySelector('.art').value = ''; //art =''; klappt merkwürdigerweise nicht
@@ -24,7 +25,7 @@ buchen.addEventListener('submit', (e) => {
   buchen.querySelector('.art').focus();
 
   // Buchungskontrolle
-  setTimeout("berechneGesamt()", 1000); // Ohne Timeout ist die Abfrage schneller als die Buchung mit post
+  // setTimeout("berechneGesamt()", 1000); // Ohne Timeout ist die Abfrage schneller als die Buchung mit post
 });
 
 function post(path, data) {
@@ -35,7 +36,7 @@ function post(path, data) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  });
+  })
 }
 
 function berechneGesamt() {
