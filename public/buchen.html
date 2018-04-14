@@ -48,7 +48,9 @@ function berechneGesamt() {
       for (let row of json) {
         ausgabenGesamt += row.Euro;
       }
-      document.getElementById("gesamtausgaben").innerHTML = ausgabenGesamt;
+      document.getElementById(
+        "gesamtausgaben"
+      ).innerHTML = ausgabenGesamt.toFixed(2).replace(".", ",");
     })
     .catch(console.log);
 }

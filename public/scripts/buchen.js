@@ -45,7 +45,7 @@ function post(path, data) {
       for (let row of json) {
         ausgabenGesamt += row.Euro;
       }
-      gesamtausgaben.innerHTML = ausgabenGesamt;
+      gesamtausgaben.innerHTML = ausgabenGesamt.toFixed(2).replace('.', ',');
     })
     .catch(console.log);
 }

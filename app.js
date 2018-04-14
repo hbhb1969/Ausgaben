@@ -29,13 +29,14 @@ app.post('/buchen', (req, res) => {
     "', '" +
     req.body.euro +
     "')";
+  // neuer Datensatz wird eingefügt
   pool.query(sql, (err, rows, fields) => {
     if (err) throw err;
-    console.log('1. Gebucht: ' + req.body.art + ' - ' + req.body.euro + ' €');
+    console.log('Gebucht: ' + req.body.art + ' - ' + req.body.euro + ' €');
+    // Die neuen Gesamtausgaben werden ausgelesen und im JSON-Format in die HTML-Seite geschrieben
     pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
       if (err) throw err;
-      console.log('2. Abfrage');
-      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+      res.json(rows);
     });
   });
 });
