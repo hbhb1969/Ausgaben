@@ -32,13 +32,12 @@ app.post('/buchen', (req, res) => {
   pool.query(sql, (err, rows, fields) => {
     if (err) throw err;
     console.log('1. Gebucht: ' + req.body.art + ' - ' + req.body.euro + ' €');
+    pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
+      if (err) throw err;
+      console.log('2. Abfrage');
+      res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
+    });
   });
-  pool.query('SELECT * FROM ausgaben', (err, rows, fields) => {
-    if (err) throw err;
-    console.log('2. Abfrage');
-    res.json(rows); // response = Abfrageergebnis im JSON-Format -> wird in der der HTML-Seite per fetch abgerufen
-  });
-
 });
 
 // Route zum Speichern der Gesamtausgaben, wird noch für die erste Abfrage benötigt
